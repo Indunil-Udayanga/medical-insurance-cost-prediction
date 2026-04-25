@@ -22,6 +22,7 @@ Multiple regression models were tested, and the best-performing model (**Random 
 ## 📊 Dataset Details
 
 - **Dataset:** `medical_cost_dataset.csv`
+- **Source:** Kaggle
 - **Target Variable:** `charges_usd`
 
 ### 🔑 Input Features
