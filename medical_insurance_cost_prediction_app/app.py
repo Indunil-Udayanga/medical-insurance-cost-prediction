@@ -19,9 +19,8 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # ------------------------
+        
         # 1. Get form data
-        # ------------------------
         data = {
             "age": int(request.form['age']),
             "bmi": float(request.form['bmi']),
@@ -37,14 +36,10 @@ def predict():
             "alcohol_intake": request.form['alcohol_intake']
         }
 
-        # ------------------------
         # 2. Create empty dataframe with correct columns
-        # ------------------------
         df = pd.DataFrame(0, index=[0], columns=columns)
 
-        # ------------------------
         # 3. Fill numeric values
-        # ------------------------
         df["age"] = data["age"]
         df["bmi"] = data["bmi"]
         df["children"] = data["children"]
@@ -53,9 +48,8 @@ def predict():
         df["glucose"] = data["glucose"]
         df["heart_rate"] = data["heart_rate"]
 
-        # ------------------------
         # 4. Encode categorical features safely
-        # ------------------------
+
         if "sex_male" in df.columns:
             df["sex_male"] = 1 if data["sex"] == "male" else 0
 
@@ -74,9 +68,7 @@ def predict():
         if "alcohol_intake_high" in df.columns:
             df["alcohol_intake_high"] = 1 if data["alcohol_intake"] == "high" else 0
 
-        # ------------------------
         # 5. Scale + Predict
-        # ------------------------
         scaled = scaler.transform(df)
         prediction = model.predict(scaled)[0]
 
