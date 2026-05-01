@@ -1,61 +1,168 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    width: 420px;
-    margin: 40px auto;
-    padding: 25px;
-    background: white;
-    border-radius: 15px;
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+}
+
+.card {
+    width: 460px;
+    padding: 40px 35px;
+    border-radius: 24px;
+    backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+    color: white;
     text-align: center;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
 }
 
 h1 {
-    margin-bottom: 20px;
-    color: #333;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
 }
 
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 14px;
+.subtitle {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-bottom: 30px;
+    font-weight: 300;
 }
 
+/* ── floating-label wrapper ── */
+.input-group {
+    position: relative;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+input,
 select {
-    height: 42px;
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    outline: none;
+    background: rgba(255, 255, 255, 0.18);
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+input:focus,
+select:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* floating label */
+label {
+    position: absolute;
+    left: 14px;
+    top: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14px;
+    font-weight: 300;
+    transition: top 0.25s, font-size 0.25s, color 0.25s;
+    pointer-events: none;
+    background: transparent;
+}
+
+input:focus + label,
+input:valid + label,
+select:focus + label,
+select:valid + label {
+    top: -9px;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 500;
+    background: rgba(118, 75, 162, 0.7);
+    padding: 0 6px;
+    border-radius: 4px;
+}
+
+/* select styling */
+select {
+    color: white;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+}
+
+select option {
+    color: #333;
+    background: white;
+}
+
+/* section divider label */
+.section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    text-align: left;
+    margin: 22px 0 12px;
+}
+
+/* two-column row */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
 }
 
 button {
     width: 100%;
-    padding: 12px;
-    background: #4facfe;
-    color: white;
+    padding: 13px;
+    margin-top: 10px;
     border: none;
-    border-radius: 10px;
-    font-size: 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    color: white;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.2px;
 }
 
 button:hover {
-    background: #007bff;
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(255, 94, 98, 0.45);
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 .result {
-    margin-top: 20px;
-    padding: 10px;
-    background: #e8fff0;
-    border-radius: 10px;
-}
-
-.result h2 {
-    color: green;
+    margin-top: 24px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: rgba(0, 255, 150, 0.15);
+    border: 1px solid rgba(0, 255, 150, 0.4);
+    font-size: 15px;
+    font-weight: 500;
 }
