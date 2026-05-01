@@ -6,48 +6,95 @@
 </head>
 
 <body>
-
-<div class="container">
+<div class="card">
 
     <h1>Insurance Cost Predictor</h1>
+    <p class="subtitle">Fill in your health details to estimate your insurance premium</p>
 
     <form action="/predict" method="post">
 
-        <input type="number" name="age" placeholder="Age" required>
+        <!-- ── Personal ── -->
+        <p class="section-label">Personal</p>
 
-        <input type="number" step="0.1" name="bmi" placeholder="BMI" required>
+        <div class="row">
+            <div class="input-group">
+                <input type="number" name="age" required placeholder=" " min="0">
+                <label>Age</label>
+            </div>
+            <div class="input-group">
+                <input type="number" step="0.1" name="bmi" required placeholder=" " min="0">
+                <label>BMI</label>
+            </div>
+        </div>
 
-        <input type="number" name="children" placeholder="Children" required>
+        <div class="row">
+            <div class="input-group">
+                <select name="sex" required>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+                <label>Sex</label>
+            </div>
+            <div class="input-group">
+                <input type="number" name="children" required placeholder=" " min="0">
+                <label>Children</label>
+            </div>
+        </div>
 
-        <input type="number" name="blood_pressure" placeholder="Blood Pressure" required>
+        <!-- ── Health Vitals ── -->
+        <p class="section-label">Health Vitals</p>
 
-        <input type="number" name="cholesterol" placeholder="Cholesterol" required>
+        <div class="row">
+            <div class="input-group">
+                <input type="number" name="blood_pressure" required placeholder=" " min="0">
+                <label>Blood Pressure</label>
+            </div>
+            <div class="input-group">
+                <input type="number" name="cholesterol" required placeholder=" " min="0">
+                <label>Cholesterol</label>
+            </div>
+        </div>
 
-        <input type="number" name="glucose" placeholder="Glucose" required>
+        <div class="row">
+            <div class="input-group">
+                <input type="number" name="glucose" required placeholder=" " min="0">
+                <label>Glucose</label>
+            </div>
+            <div class="input-group">
+                <input type="number" name="heart_rate" required placeholder=" " min="0">
+                <label>Heart Rate</label>
+            </div>
+        </div>
 
-        <input type="number" name="heart_rate" placeholder="Heart Rate" required>
+        <!-- ── Lifestyle ── -->
+        <p class="section-label">Lifestyle</p>
 
-        <select name="sex" required>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-        </select>
+        <div class="input-group">
+            <select name="smoker" required>
+                <option value="no">Non-Smoker</option>
+                <option value="yes">Smoker</option>
+            </select>
+            <label>Smoking Status</label>
+        </div>
 
-        <select name="smoker" required>
-            <option value="no">Non-Smoker</option>
-            <option value="yes">Smoker</option>
-        </select>
-
-        <select name="exercise_level" required>
-            <option value="low">Low Exercise</option>
-            <option value="medium">Medium Exercise</option>
-            <option value="high">High Exercise</option>
-        </select>
-
-        <select name="alcohol_intake" required>
-            <option value="none">No Alcohol</option>
-            <option value="moderate">Moderate</option>
-            <option value="high">High</option>
-        </select>
+        <div class="row">
+            <div class="input-group">
+                <select name="exercise_level" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <label>Exercise Level</label>
+            </div>
+            <div class="input-group">
+                <select name="alcohol_intake" required>
+                    <option value="none">None</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">High</option>
+                </select>
+                <label>Alcohol Intake</label>
+            </div>
+        </div>
 
         <button type="submit">Predict Insurance Cost</button>
 
@@ -55,11 +102,10 @@
 
     {% if prediction_text %}
     <div class="result">
-        <h2>{{ prediction_text }}</h2>
+        {{ prediction_text }}
     </div>
     {% endif %}
 
 </div>
-
 </body>
 </html>
